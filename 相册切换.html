@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        ul > li {
+            float: left;
+            width: 50px;
+            height: 50px;
+            margin-top: 5px;
+            margin-left: 50px;
+            border: 2px solid #fff;
+        }
+        ul > li.active {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <img id="img" src="./dahuangmao1.png" alt="" width="500px">
+    <ul>
+        <li class="active"><a href=""><img class="smallimg" src="./dahuangmao1.png" alt="" width="50px"></a></li>
+        <li><a href=""><img class="smallimg" src="./dahuangmao2.png" alt="" width="50px"></a></li>
+        <li><a href=""><img class="smallimg" src="./dahuangmao3.png" alt="" width="50px"></a></li>
+        <li><a href=""><img class="smallimg" src="./dahuangmao4.png" alt="" width="50px"></a></li>
+    </ul>
+    <script>
+        let bigImg = document.getElementById('img')
+        let imgLists = document.getElementsByTagName('li')
+        let smallImg = document.getElementsByClassName('smallimg')
+        for(let i = 0; i < imgLists.length; i++) {
+            imgLists[i].onmouseover = function() {
+                for(let j = 0; j < imgLists.length; j++) {
+                    imgLists[j].setAttribute('class', '')
+                }
+                let smallImgSrc = smallImg[i].getAttribute('src')
+               bigImg.setAttribute('src', smallImgSrc)
+               this.setAttribute('class', 'active')
+               
+            }
+        }
+    </script>
+</body>
+</html>

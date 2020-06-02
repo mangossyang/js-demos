@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .box {
+            width: 800px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+        .box_top {
+            padding: 20px;
+        }
+        ul {
+            padding-left: 20px;
+            list-style: none;
+        }
+        ul li {
+            width: 650px;
+            line-height: 45px;
+            font-size: 20px;
+        }
+        ul li a {
+            float: right;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box_top">
+            <textarea id="comment" cols="90" rows="5" placeholder="请输入你的评论"></textarea>
+            <button id="btn">发表</button>
+        </div>
+        <ul id="content">
+
+        </ul>
+    </div>
+    <script>
+        let textarea = document.querySelector('#comment')
+        let btn = document.querySelector('#btn')
+        let content = document.querySelector('#content')
+
+        btn.onclick = function () {
+            //获取textarea内容
+            let text = textarea.value
+            if(text.length === 0) {
+                alert('请输入内容')
+                return
+            }
+            let li = document.createElement('li')
+            li.innerHTML = `${text}<a href="javascript:;">删除</a>`
+            content.insertBefore(li, content.children[0])
+
+            textarea.value = ''
+
+            let delBtns = document.getElementsByTagName('a')
+            for(let i = 0; i < delBtns.length; i++) {
+                delBtns[i].onclick =function() {
+                    this.parentNode.remove()
+                }
+        }
+
+        }
+    </script>
+</body>
+</html>

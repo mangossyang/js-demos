@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #date{
+            width: 500px;
+            height: 400px;
+            border-radius: 15px;
+            border: 2px solid #f1c40f;
+            margin: 200px auto;
+            position: relative;
+        }
+        #nowDate {
+            font-size: 25px;
+            line-height: 50px;
+            text-align: center;
+            color: #c0392b;
+        }
+        #day {
+            width: 200px;
+            height: 200px;
+            background-color: #ecf0f1;
+            position: absolute;
+            left: 150px;
+            bottom: 50px;
+            font-size: 100px;
+            line-height: 200px;
+            text-align: center;
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="date">
+        <p id="nowDate"></p>
+        <p id="day"></p>
+    </div>
+    <script>
+        let nowDate = document.querySelector('#nowDate')
+        let day = document.querySelector('#day')
+
+        setInterval(getTime, 100)
+
+        function getTime() {
+            let now = new Date()
+            let year = now.getFullYear()
+            let month = now.getMonth()
+            let d = now.getDate()
+            let week = now.getDay()
+            let hour = now.getHours()
+            let minute = now.getMinutes()
+            let second = now.getSeconds()
+
+            let temp = '' + (hour > 12 ? hour-12 : hour)
+            if(temp === 0) {
+                temp = '12'
+            }
+            let weeks = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+            temp = temp + (minute < 10 ? ':0' : ':') + minute
+            temp = temp + (second < 10 ? ':0' : ':') + second
+            temp = temp + (hour >= 12 ? ' P.M' : ' A.M')
+            temp = `${year}年${month+1}月${d}日${weeks[week]}${temp}`
+            nowDate.innerHTML = temp
+        }
+
+        
+        day.innerHTML = new Date().getDate()
+    </script>
+</body>
+</html>

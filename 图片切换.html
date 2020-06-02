@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img id="img" src="./dahuangmao1.png" alt="" >
+    <br>
+    <button id="prev">上一张</button>
+    <button id="next">下一张</button>
+    <script>
+        let img = document.querySelector('#img')
+        let prev = document.querySelector('#prev')
+        let next = document.querySelector('#next')
+        let currentIndex = 1
+        next.addEventListener('click', function() {
+            if(currentIndex ===4) {
+                currentIndex = 1
+            } else{
+                currentIndex++
+            }
+            img.setAttribute('src', `./dahuangmao${currentIndex}.png`)
+        })
+        prev.addEventListener('click', function() {
+            if(currentIndex ===1) {
+                currentIndex = 4
+            } else{
+                currentIndex--
+            }
+            img.setAttribute('src', `./dahuangmao${currentIndex}.png`)
+        })
+
+    </script>
+</body>
+</html>

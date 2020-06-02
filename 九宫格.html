@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+        }
+        .item > img{
+            width: 310px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">3</button>
+    <button id="btn2">4</button>
+    <button id="btn3">5</button>
+    <div class="box">
+        <div class="item"><img src="./img/dahuangmao1.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao2.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao3.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao4.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao1.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao2.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao3.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao4.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao1.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao2.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao3.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao4.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao1.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao2.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao3.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao4.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao1.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao2.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao3.png" alt=""></div>
+        <div class="item"><img src="./img/dahuangmao4.png" alt=""></div>
+    </div>
+    <script>
+        let btn1 = document.querySelector('#btn1')
+        let btn2 = document.querySelector('#btn2')
+        let btn3 = document.querySelector('#btn3')
+        let items = document.querySelectorAll('.item')
+        
+        click(btn1,3)
+        click(btn2,4)
+        click(btn3,5)
+        function click(obj, colsNum) {
+            obj.onclick = function() {
+                flex(colsNum)
+            }
+        }
+
+        function flex(colsNum) {
+            for(let i = 0; i < items.length; i++) {
+                items[i].style.position = 'absolute'
+                let row = parseInt(i / colsNum)
+                let col = parseInt(i % colsNum)
+                items[i].style.top = row * items[i].offsetHeight + 'px'
+                items[i].style.left = col * items[i].offsetWidth + 'px'
+            }
+         }   
+    </script>
+</body>
+</html>
