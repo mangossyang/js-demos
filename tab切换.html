@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .tab{
+            width: 800px;
+            height: 500px;
+            background-color: #e67e22;
+            margin:200px auto;
+            border-radius:0 0 20px 20px;
+
+        }
+        .tab-list ul{
+            height: 50px;
+            display: flex;
+        }
+        .tab-list ul li {
+            flex: 1;
+            list-style: none;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+        .tab-content{
+            position: relative;
+        }
+        .tab-content .item{
+            height: 450px;
+            position: absolute;
+        }
+        .tab .tab-list .active{
+            color: red;
+            border-bottom:2px solid pink;
+            
+        }
+        .tab-content .item{
+            display: none;
+            font-size: 50px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab-list">
+            <ul>
+                <li class="active">首页</li>
+                <li>歌单</li>
+                <li>登录</li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="item" style="display: block;">1</div>
+            <div class="item">2</div>
+            <div class="item">3 </div>
+        </div>
+    </div>
+    <script>
+        let lis = document.querySelectorAll('li')
+        let item = document.querySelectorAll('.item')
+        for(let i = 0; i < lis.length; i++) {
+            lis[i].onclick = function() {
+               for(let j = 0; j < lis.length; j++) {
+                   lis[j].removeAttribute('class', 'active')
+                   item[j].style.display = 'none'
+               }
+               this.setAttribute('class', 'active')
+               item[i].style.display = 'block'
+            }
+        }
+    </script>
+</body>
+</html>
